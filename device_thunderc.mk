@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/thunderg/prebuilt/etc/nvram.txt:system/etc/wl/nvram.txt \
+    device/lge/thunderc/prebuilt/etc/nvram.txt:system/etc/wl/nvram.txt \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
@@ -124,8 +124,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
     vendor/lge/thunderc/proprietary/lib/hw/hal_seport.default.so:system/lib/hw/hal_seport.default.so  \
     vendor/lge/thunderc/proprietary/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
-    vendor/lge/thunderg/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
-    vendor/lge/thunderg/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
+    vendor/lge/thunderc/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
+    vendor/lge/thunderc/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
 #    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
 #   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
