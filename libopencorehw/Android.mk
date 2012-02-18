@@ -15,26 +15,41 @@
 #
 
 ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderc)
+ifneq ($(BUILD_WITHOUT_PV),true)
 
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
+# Set up the OpenCore variables.
+include external/opencore/Config.mk
+LOCAL_C_INCLUDES := $(PV_INCLUDES)
+
 LOCAL_SRC_FILES := \
-    QComOMXPlugin.cpp                      \
+    android_surface_output_msm72xx.cpp
 
 LOCAL_CFLAGS := $(PV_CFLAGS_MINUS_VISIBILITY)
 
-LOCAL_C_INCLUDES:= \
-        $(TOP)/frameworks/base/include/media/stagefright/openmax
+LOCAL_SHARED_LIBRARIES := \
+    libutils \
+    libbinder \
+    libcutils \
+    libui \
+    libhardware\
+    libandroid_runtime \
+    libmedia \
+    libskia \
+    libopencore_common \
+    libicuuc \
+    libopencore_player \
+    libsurfaceflinger_client
 
-LOCAL_SHARED_LIBRARIES :=       \
-        libbinder               \
-        libutils                \
-        libcutils               \
-        libdl                   \
-        libui                   \
+LOCAL_MODULE := libopencorehw
 
-LOCAL_MODULE := libstagefrighthw
 LOCAL_MODULE_TAGS := optional
+
+LOCAL_LDLIBS += 
+
 include $(BUILD_SHARED_LIBRARY)
+
+endif
 endif

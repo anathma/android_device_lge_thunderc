@@ -1,5 +1,5 @@
 $(call inherit-product, build/target/product/full.mk)
-#$(call inherit-product, build/target/product/languages_small.mk)
+$(call inherit-product, build/target/product/languages_small.mk)
 $(call inherit-product, vendor/cm/config/common.mk)
 $(call inherit-product-if-exists, vendor/lge/thunderc/thunderc-vendor.mk)
 
@@ -30,6 +30,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/lge/thunderg/prebuilt/etc/nvram.txt:system/etc/wl/nvram.txt \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
@@ -47,7 +48,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-    vendor/lge/thunderc/proprietary/etc/apn-conf.xml:system/etc/apn-conf.xml \
+    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
 
 #WIFI
 PRODUCT_COPY_FILES += \
@@ -121,11 +122,13 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/libgsl.so:system/lib/libgsl.so \
     vendor/lge/thunderc/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    vendor/lge/thunderc/proprietary/lib/hw/hal_seport.default.so:system/lib/hw/hal_seport.default.so  \
     vendor/lge/thunderc/proprietary/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
-    vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
+    vendor/lge/thunderg/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
+    vendor/lge/thunderg/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
-    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
-
+#    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
+#   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 # Camera
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
@@ -157,6 +160,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
     vendor/lge/thunderc/proprietary/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
+    vendor/lge/thunderc/proprietary/lib/bluez-plugin/audio.so:system/lib/bluez-plugin/audio.so \
     vendor/lge/thunderc/proprietary/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
     vendor/lge/thunderc/proprietary/lib/hw/audio_policy.thunderc.so:system/lib/hw/audio_policy.thunderc.so \
     vendor/lge/thunderc/proprietary/lib/hw/audio.primary.goldfish.so:system/lib/hw/audio.primary.goldfish.so \
@@ -287,8 +291,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
     vendor/lge/thunderc/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
 
-
-
 # Bluetooth
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/BCM4325D1_004.002.004.0218.0248.hcd:system/etc/firmware/BCM4325D1_004.002.004.0218.0248.hcd
@@ -304,12 +306,30 @@ PRODUCT_COPY_FILES += \
 
 # This is a prebuilt from lupohirp.  It's much smaller than the default.  Why?
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/packages/app/LatinIME.apk:system/app/LatinIME.apk
-    vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk
+    vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
+    vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
+    vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
 
-#hwcomposer shit
-PRODUCT_COPY_FILES += \
-   vendor/lge/thunderc/proprietary/lib/hw/hwcomposer.default.so:system/lib/hw/hwcomposer.default.so \
+PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
+PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
+
+       # HardwareRenderer properties
+# dirty_regions: "false" to disable partial invalidates, override if enabletr=true
+PRODUCT_PROPERTY_OVERRIDES += \
+    hwui.render_dirty_regions=false \
+    hwui.disable_vsync=true \
+    hwui.print_config=choice \
+    debug.enabletr=false
+
+PRODUCT_PACKAGES += \
+    libopencorehw \
+    libstagefrighthw \
+    libmm-omxcore \
+    libOmxCore \
+    libgenlock \
+    libqcomui \
+    liboverlay \
+    libtilerenderer 
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -322,6 +342,8 @@ PRODUCT_MANUFACTURER := LGE
 CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Sprint
 CDMA_CARRIER_NUMERIC := 310120
+
+PRODUCT_LOCALES += mdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
