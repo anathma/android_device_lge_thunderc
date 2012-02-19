@@ -1,5 +1,5 @@
 $(call inherit-product, build/target/product/full.mk)
-$(call inherit-product, build/target/product/languages_small.mk)
+#$(call inherit-product, build/target/product/languages_small.mk)
 $(call inherit-product, vendor/cm/config/common.mk)
 $(call inherit-product-if-exists, vendor/lge/thunderc/thunderc-vendor.mk)
 
@@ -23,6 +23,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     vendor/lge/thunderc/proprietary/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     vendor/lge/thunderc/proprietary/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
+    vendor/lge/thunderc/proprietary/Generic.kl:system/usr/keylayout/Generic.kl \
 
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
@@ -30,7 +31,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/thunderc/prebuilt/etc/nvram.txt:system/etc/wl/nvram.txt \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
@@ -48,7 +48,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
 
 #WIFI
 PRODUCT_COPY_FILES += \
