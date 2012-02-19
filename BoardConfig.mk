@@ -1,7 +1,6 @@
 include vendor/lge/thunderc/BoardConfigVendor.mk
 
 
-
 TARGET_GLOBAL_CFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
 TARGET_GLOBAL_CPPFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
 
