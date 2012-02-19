@@ -309,6 +309,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
     vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
     vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
+	vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
 
 PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
 PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
