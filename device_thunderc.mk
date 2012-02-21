@@ -29,11 +29,11 @@ PRODUCT_COPY_FILES += \
     device/lge/thunderc/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
     device/lge/thunderc/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
     vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
-    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+#    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \	
 
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
@@ -126,8 +126,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
+#	vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 #    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
-#   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
+#   
 # Camera
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
@@ -182,6 +183,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # LGE services
 PRODUCT_COPY_FILES += \
@@ -305,11 +308,10 @@ PRODUCT_COPY_FILES += \
 
 # This is a prebuilt from lupohirp.  It's much smaller than the default.  Why?
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
     vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
     vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
 	vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
-
+#   vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
 PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
 PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
 
@@ -321,6 +323,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwui.print_config=choice \
     debug.enabletr=false
 
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1
+	persist.sys.strictmode.visual=0 \
+	
 PRODUCT_PACKAGES += \
     libopencorehw \
     libstagefrighthw \
