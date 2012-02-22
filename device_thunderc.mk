@@ -103,7 +103,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/ami304d:system/bin/ami304d \
-    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
+#    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
     
 
 # 2D (using proprietary because of poor perfomance of open source libs)
@@ -308,12 +308,12 @@ PRODUCT_COPY_FILES += \
 
 # This is a prebuilt from lupohirp.  It's much smaller than the default.  Why?
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
     vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
 	vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
 #   vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
-PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
-PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
+#    vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
+#PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
+#PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
 
        # HardwareRenderer properties
 # dirty_regions: "false" to disable partial invalidates, override if enabletr=true
@@ -321,7 +321,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwui.render_dirty_regions=false \
     hwui.disable_vsync=true \
     hwui.print_config=choice \
-    debug.enabletr=false
+	debug.composition.type=gpu \
+	debug.sf.hw=1 \
+#    debug.enabletr=false
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
