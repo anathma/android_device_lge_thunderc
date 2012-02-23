@@ -31,10 +31,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+#    device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \   
 #    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \	
-
+#       device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.d/05mountext:system/etc/init.d/05mountext \
