@@ -14,7 +14,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_PROVIDES_LIBRIL := true
+#TARGET_PROVIDES_LIBRIL := true
 TARGET_OTA_ASSERT_DEVICE := thunderc
 
 #BOOT AND BOOTLOADER
@@ -41,7 +41,7 @@ BOARD_WLAN_DEVICE := bcm4325
 BOARD_WIRELESS_CHIP := bcm4325
 WPA_SUPPLICANT_VERSION := VER_0_5_X
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
-WIFI_DRIVER_MODULE_ARG := "iface_name=wlan0 firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt" 
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt" 
 WIFI_DRIVER_MODULE_NAME := wireless
 WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc_apsta.bin"
@@ -99,7 +99,7 @@ BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_C
 #ICS settings
 DISABLE_DEXPREOPT := true
 BOARD_NO_PAGE_FLIPPING := true
-#USE_OPENGL_RENDERER := true
+USE_OPENGL_RENDERER := true
 BOARD_HAS_FLIPPED_SCREEN := true
 COPYBIT_MSM7K := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -116,7 +116,7 @@ TARGET_GRALLOC_USES_ASHMEM := false
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 TARGET_USES_GENLOCK := true
-#BUILD_WITH_FULL_STAGEFRIGHT := true
+BUILD_WITH_FULL_STAGEFRIGHT := true
 
 
 
