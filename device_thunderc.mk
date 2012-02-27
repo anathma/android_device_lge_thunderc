@@ -23,18 +23,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     vendor/lge/thunderc/proprietary/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     vendor/lge/thunderc/proprietary/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
-    vendor/lge/thunderc/proprietary/Generic.kl:system/usr/keylayout/Generic.kl \
 
 PRODUCT_COPY_FILES += \
-    device/lge/thunderc/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
-    device/lge/thunderc/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
-    vendor/lge/thunderc/proprietary/etc/init.local.rc:system/etc/init.local.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-#    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \	
-
+    # vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.d/05mountext:system/etc/init.d/05mountext \
@@ -48,6 +40,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
+#    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
 
 #WIFI
 PRODUCT_COPY_FILES += \
@@ -103,7 +96,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/ami304d:system/bin/ami304d \
-#    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
+    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
     
 
 # 2D (using proprietary because of poor perfomance of open source libs)
@@ -126,9 +119,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
-#	vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
+	vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 #    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
-#   
+#   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 # Camera
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
@@ -184,7 +177,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+
+185 	188 	
+
+ 
 
 # LGE services
 PRODUCT_COPY_FILES += \
@@ -310,10 +307,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
 	vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
-#   vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
-#    vendor/lge/thunderc/packages/app/Camera.apk:system/app/Camera.apk \
-#PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
-#PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
+
+PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
+PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
 
        # HardwareRenderer properties
 # dirty_regions: "false" to disable partial invalidates, override if enabletr=true
@@ -321,16 +317,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwui.render_dirty_regions=false \
     hwui.disable_vsync=true \
     hwui.print_config=choice \
-	debug.composition.type=gpu \
-	debug.sf.hw=1 \
-#    debug.enabletr=false
-
+    debug.enabletr=false
+	
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     ro.debuggable=1
-	persist.sys.strictmode.visual=0 \
-	
+    persist.sys.strictmode.visual=0 \
+
 PRODUCT_PACKAGES += \
     libopencorehw \
     libstagefrighthw \
