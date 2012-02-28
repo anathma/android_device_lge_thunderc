@@ -23,10 +23,13 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     vendor/lge/thunderc/proprietary/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     vendor/lge/thunderc/proprietary/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
+    vendor/lge/thunderc/proprietary/Generic.kl:system/usr/keylayout/Generic.kl \
 
 PRODUCT_COPY_FILES += \
+    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    # vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
+    device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.d/05mountext:system/etc/init.d/05mountext \
@@ -40,7 +43,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-#    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
 
 #WIFI
 PRODUCT_COPY_FILES += \
@@ -96,7 +99,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/ami304d:system/bin/ami304d \
-    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
+#    vendor/lge/thunderc/proprietary/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
     
 
 # 2D (using proprietary because of poor perfomance of open source libs)
@@ -119,9 +122,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
-	vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 #    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
+
 #   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
+
 # Camera
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
@@ -176,13 +180,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
-
-185 	188 	
-
- 
-
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 # LGE services
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/port-bridge:system/bin/port-bridge \
@@ -290,6 +289,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
     vendor/lge/thunderc/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
 
+
+
 # Bluetooth
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/BCM4325D1_004.002.004.0218.0248.hcd:system/etc/firmware/BCM4325D1_004.002.004.0218.0248.hcd
@@ -306,7 +307,7 @@ PRODUCT_COPY_FILES += \
 # This is a prebuilt from lupohirp.  It's much smaller than the default.  Why?
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/packages/app/ApexLauncher.apk:system/app/ApexLauncher.apk \
-	vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
+    vendor/lge/thunderc/packages/app/FileManager2.apk:system/app/FileManager2.apk \
 
 PRODUCT_PROPERTY_OVERRIDES += debug.composition.type=mdp
 PRODUCT_PROPERTY_OVERRIDES += debug.gr.numframebuffers=2
@@ -318,12 +319,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwui.disable_vsync=true \
     hwui.print_config=choice \
     debug.enabletr=false
-	
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
-    ro.debuggable=1
-    persist.sys.strictmode.visual=0 \
+
 
 PRODUCT_PACKAGES += \
     libopencorehw \
@@ -336,12 +332,14 @@ PRODUCT_PACKAGES += \
     libtilerenderer 
 
 
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := thunderc
 PRODUCT_BRAND := LGE
 PRODUCT_DEVICE := thunderc
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE
+
 
 CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Sprint
@@ -351,6 +349,7 @@ PRODUCT_LOCALES += mdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
+
     ro.com.google.clientidbase=$(CDMA_GOOGLE_BASE) \
     ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
