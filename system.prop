@@ -22,7 +22,7 @@ DEVICE_PROVISIONED=1
 # Vibrator amp default value
 ro.lge.vibrator_amp=125
 ## wifi
-wifi.interface=eth0
+wifi.interface=wlan0
 wifi.supplicant_scan_interval=120
 ## opengles 2.0
 ro.opengles.version=131072
