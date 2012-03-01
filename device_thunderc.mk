@@ -26,10 +26,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/Generic.kl:system/usr/keylayout/Generic.kl \
 
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    
+#     vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \    
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/init.d/05mountext:system/etc/init.d/05mountext \
@@ -123,7 +122,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:obj/lib/libmemalloc.so  \
     vendor/lge/thunderc/proprietary/lib/libmemalloc.so:system/lib/libmemalloc.so \
 #    device/lge/thunderc/prebuilt/lib/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
-
 #   vendor/lge/thunderc/proprietary/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
 
 # Camera
@@ -182,6 +180,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+	
 # LGE services
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/bin/port-bridge:system/bin/port-bridge \
@@ -293,7 +292,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/bin/BCM4325D1_004.002.004.0218.0248.hcd:system/etc/firmware/BCM4325D1_004.002.004.0218.0248.hcd
+    vendor/lge/thunderc/proprietary/bin/BCM4325D1_004.002.004.0218.0248.hcd:system/etc/firmware/BCM4325D1_004.002.004.0218.0248.hcd \
+	vendor/lge/thunderc/proprietary/bin/btld:system/bin/btld \
     
 # FONTS
 PRODUCT_COPY_FILES += \

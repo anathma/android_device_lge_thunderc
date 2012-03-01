@@ -40,12 +40,13 @@ BOARD_FM_DEVICE := bcm4325
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WLAN_DEVICE := bcm4325
 BOARD_WIRELESS_CHIP := bcm4325
-WPA_SUPPLICANT_VERSION := VER_0_5_X
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
-WIFI_DRIVER_MODULE_NAME := wireless
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
-WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc_apsta.bin"
+WIFI_DRIVER_MODULE_ARG := "iface_name=wlan firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
+WIFI_DRIVER_MODULE_NAME := "wireless"
+WIFI_DRIVER_FW_PATH_STA := "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/etc/wl/rtecdc_apsta.bin"
 WIFI_DRIVER_HAS_LGE_SOFTAP:=true
 
 #Kernel
@@ -90,9 +91,10 @@ TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
 # MASS STORAGE
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # OFFLINE CHARGING
 BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_CMDLINE_VALUE='"pwroff"'
@@ -108,9 +110,9 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 #BUILD_OLD_LIBCAMERA:= true
 COMMON_GLOBAL_CFLAGS += -DTARGET_MSM7x27 -DREFRESH_RATE=60 -DQCOM_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_GRALLOC_BUFFERS -DMISSING_EGL_PIXEL_FORMAT_YV12
-#COMMON_GLOBAL_CFLAGS += -DEGL_TRACE #-DDEBUG_CALC_FPS
+COMMON_GLOBAL_CFLAGS += -DEGL_TRACE #-DDEBUG_CALC_FPS
 COMMON_GLOBAL_CFLAGS += -D_INTERNAL_BINDER_PARCEL_ -DUSE_LGE_ALS_DUMMY
-COMMON_GLOBAL_CFLAGS += -DEGL_ALWAYS_ASYNC
+#COMMON_GLOBAL_CFLAGS += -DEGL_ALWAYS_ASYNC
 TARGET_PROVIDES_SURFACEFLINGER := true
 TARGET_FORCE_CPU_UPLOAD := true
 BOARD_USE_SKIA_LCDTEXT := true
