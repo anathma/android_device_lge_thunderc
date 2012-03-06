@@ -1,4 +1,4 @@
-# Copyright (C) 2008 The Android Open Source Project
+# Copyright (C) 2011 The CyanogenMod project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,23 +13,15 @@
 # limitations under the License.
 
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderc)
-
 LOCAL_PATH:= $(call my-dir)
-# HAL module implemenation, not prelinked and stored in
-# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 include $(CLEAR_VARS)
+
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := lights.c
+LOCAL_SRC_FILES := getmac.c
 
 LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_MODULE := hwaddrs
 
-LOCAL_SHARED_LIBRARIES := liblog
-
-LOCAL_MODULE := lights.$(TARGET_BOOTLOADER_BOARD_NAME)
-
-include $(BUILD_SHARED_LIBRARY)
-
-endif
+include $(BUILD_EXECUTABLE)
