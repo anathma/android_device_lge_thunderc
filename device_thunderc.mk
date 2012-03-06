@@ -28,6 +28,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+	vendor/lge/thunderc/proprietary/default.prop:root/default.prop \
 #     vendor/lge/thunderc/proprietary/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \    
 # Drew's init stuff
 PRODUCT_COPY_FILES += \
